@@ -2,10 +2,142 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Para Mey 💖</title>
+  <title>Para Mey 💗</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
-  <h1>Para Mey 🎄💖</h1>
-  <p>Esto lo hice con mucho cariño.</p>
+
+<!-- Corazones flotantes -->
+<div class="floating-hearts" id="floatingHearts"></div>
+
+<audio id="successSound">
+  <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4f8b3f8f9c.mp3" type="audio/mpeg">
+</audio>
+
+<div class="modal" id="phraseModal">
+  <div class="modal-box">
+    <button class="close" onclick="closePhrase()">×</button>
+    <div id="phraseEmoji" style="font-size:50px; margin-bottom: 15px;"></div>
+    <p id="phraseText" style="color:#d63384; font-size: 18px; line-height: 1.8;"></p>
+  </div>
+</div>
+
+<div class="modal" id="winModal">
+  <div class="modal-box">
+    <h2 style="color:#d63384; font-size: 32px;">✨ Lo lograste ✨</h2>
+    <p style="color:#a84b7a; margin-top: 20px; font-size: 18px; line-height: 1.8;">
+      Cada mensaje es una pequeña parte de lo mucho que significas para mí 💗
+    </p>
+    <p style="margin-top: 15px; font-size: 17px;">Gracias por existir, Mey 🌸</p>
+    <button class="menu-btn" style="margin-top: 25px; max-width: 150px;" onclick="closeWin()">💖</button>
+  </div>
+</div>
+
+<h1>Para ti, Mey 💕</h1>
+<p class="subtitle">Un detalle hecho con mucho amor</p>
+
+<div class="menu-6">
+  <button class="menu-btn" onclick="openLetter()"><span>💌 Carta</span></button>
+  <button class="menu-btn" onclick="openReasons()"><span>💖 100 Razones</span></button>
+  <button class="menu-btn" onclick="openDraw()"><span>🎨 Pinta</span></button>
+  <button class="menu-btn" onclick="openPhotos()"><span>✉️ Memorama</span></button>
+
+  <div style="grid-column: 1 / -1; display:flex; gap:25px; justify-content:center; flex-wrap: wrap;">
+    <button class="menu-btn" onclick="openPlaylist()"><span>📌 Frases</span></button>
+    <button class="menu-btn" onclick="openMessage()"><span>✨ Mensaje Especial</span></button>
+  </div>
+</div>
+
+<div class="modal" id="letterModal">
+  <div class="modal-box">
+    <button class="close" onclick="closeLetter()">×</button>
+    <p id="typedText"></p>
+  </div>
+</div>
+
+<div class="modal" id="reasonsModal">
+  <div class="modal-box large">
+    <button class="close" onclick="closeReasons()">×</button>
+    <h2 style="color:#d63384; font-size: 28px; margin-bottom: 10px;">100 razones por las que te amo💖</h2>
+    <div class="reasons-list" id="reasonsList"></div>
+  </div>
+</div>
+
+<div class="modal" id="reasonModal">
+  <div class="modal-box">
+    <button class="close" onclick="closeReason()">×</button>
+    <h3 id="reasonNumber" style="color:#d63384; margin-bottom: 15px; font-size: 24px;"></h3>
+    <p id="reasonText" style="font-size: 19px; color:#d63384; line-height: 1.8;"></p>
+    <div class="reason-nav">
+      <button class="menu-btn small-btn" onclick="prevReason()">⬅️ Anterior</button>
+      <button class="menu-btn small-btn" onclick="nextReason()">Siguiente ➡️</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="drawModal">
+  <div class="modal-box large">
+    <button class="close" onclick="closeDraw()">×</button>
+    <h2 style="color:#d63384; margin-bottom: 20px; font-size: 28px;">🎨 Pinta algo bonito</h2>
+    <p style="color:#a84b7a; font-size: 17px;">Elige un color y toca para pintar 💕</p>
+
+    <div class="color-picker">
+      <div class="color-btn active" style="background: #ff1493;" onclick="changeColor('#ff1493', this)"></div>
+      <div class="color-btn" style="background: #ff69b4;" onclick="changeColor('#ff69b4', this)"></div>
+      <div class="color-btn" style="background: #ff6fa3;" onclick="changeColor('#ff6fa3', this)"></div>
+      <div class="color-btn" style="background: #ffa500;" onclick="changeColor('#ffa500', this)"></div>
+      <div class="color-btn" style="background: #ffd700;" onclick="changeColor('#ffd700', this)"></div>
+      <div class="color-btn" style="background: #9370db;" onclick="changeColor('#9370db', this)"></div>
+      <div class="color-btn" style="background: #4169e1;" onclick="changeColor('#4169e1', this)"></div>
+      <div class="color-btn" style="background: #000000;" onclick="changeColor('#000000', this)"></div>
+      <div class="eraser-btn" onclick="toggleEraser(this)">🧹</div>
+    </div>
+
+    <div style="display: flex; justify-content: center; margin-bottom: 15px;">
+      <div class="eraser-btn" onclick="toggleBucket(this)">🪣</div>
+    </div>
+
+    <canvas id="drawCanvas" width="500" height="400"></canvas>
+
+    <div class="draw-controls">
+      <button class="draw-btn" onclick="clearCanvas()">🗑️ Borrar Todo</button>
+      <button class="draw-btn" onclick="saveDrawing()">📥 Descargar PDF</button>
+    </div>
+  </div>
+</div>
+
+<div class="modal" id="photosModal">
+  <div class="modal-box large">
+    <button class="close" onclick="closePhotos()">×</button>
+    <h2 style="color:#d63384; margin-bottom: 15px; font-size: 28px;">Mensajitos lindos 🫶</h2>
+    <p style="color: #a84b7a; margin-bottom: 25px; font-size: 17px;">Resuelve el memorama para descubrir frases bonitas💕</p>
+    <div class="photo-gallery" id="photoGallery"></div>
+  </div>
+</div>
+
+<div class="modal" id="playlistModal">
+  <div class="modal-box large">
+    <button class="close" onclick="closePlaylist()">×</button>
+    <h2 style="color:#d63384; margin-bottom: 15px; font-size: 28px;">📚 Frases de libros que he leído</h2>
+    <p style="color: #a84b7a; margin-bottom: 25px; font-size: 17px;">Frases de libros que te quiero compartir💕</p>
+    <div class="board" id="phrasesBoard"></div>
+  </div>
+</div>
+
+<div class="modal" id="messageModal">
+  <div class="modal-box">
+    <button class="close" onclick="closeMessage()">×</button>
+    <h2 style="color:#d63384; margin-bottom: 25px; font-size: 28px;">✨ Mensaje Especial ✨</h2>
+    <p id="specialMessage" style="font-size: 18px; line-height: 2; color: #555; text-align: center;"></p>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>
+
 </body>
 </html>
