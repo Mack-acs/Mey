@@ -9,10 +9,6 @@
 </head>
 
 <body>
-
-<!-- Corazones flotantes -->
-<div class="floating-hearts" id="floatingHearts"></div>
-
 <audio id="successSound">
   <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4f8b3f8f9c.mp3" type="audio/mpeg">
 </audio>
@@ -42,7 +38,7 @@
 <div class="menu-6">
   <button class="menu-btn" onclick="openLetter()"><span>💌 Carta</span></button>
   <button class="menu-btn" onclick="openReasons()"><span>💖 100 Razones</span></button>
-  <button class="menu-btn" onclick="openDraw()"><span>🎨 Pinta</span></button>
+  <button class="menu-btn" onclick="openEnvelopes()"><span>💌 Sobres</span></button>
   <button class="menu-btn" onclick="openPhotos()"><span>✉️ Memorama</span></button>
 
   <div style="grid-column: 1 / -1; display:flex; gap:25px; justify-content:center; flex-wrap: wrap;">
@@ -78,36 +74,6 @@
   </div>
 </div>
 
-<div class="modal" id="drawModal">
-  <div class="modal-box large">
-    <button class="close" onclick="closeDraw()">×</button>
-    <h2 style="color:#d63384; margin-bottom: 20px; font-size: 28px;">🎨 Pinta algo bonito</h2>
-    <p style="color:#a84b7a; font-size: 17px;">Elige un color y toca para pintar 💕</p>
-
-    <div class="color-picker">
-      <div class="color-btn active" style="background: #ff1493;" onclick="changeColor('#ff1493', this)"></div>
-      <div class="color-btn" style="background: #ff69b4;" onclick="changeColor('#ff69b4', this)"></div>
-      <div class="color-btn" style="background: #ff6fa3;" onclick="changeColor('#ff6fa3', this)"></div>
-      <div class="color-btn" style="background: #ffa500;" onclick="changeColor('#ffa500', this)"></div>
-      <div class="color-btn" style="background: #ffd700;" onclick="changeColor('#ffd700', this)"></div>
-      <div class="color-btn" style="background: #9370db;" onclick="changeColor('#9370db', this)"></div>
-      <div class="color-btn" style="background: #4169e1;" onclick="changeColor('#4169e1', this)"></div>
-      <div class="color-btn" style="background: #000000;" onclick="changeColor('#000000', this)"></div>
-      <div class="eraser-btn" onclick="toggleEraser(this)">🧹</div>
-    </div>
-
-    <div style="display: flex; justify-content: center; margin-bottom: 15px;">
-      <div class="eraser-btn" onclick="toggleBucket(this)">🪣</div>
-    </div>
-
-    <canvas id="drawCanvas" width="500" height="400"></canvas>
-
-    <div class="draw-controls">
-      <button class="draw-btn" onclick="clearCanvas()">🗑️ Borrar Todo</button>
-      <button class="draw-btn" onclick="saveDrawing()">📥 Descargar PDF</button>
-    </div>
-  </div>
-</div>
 
 <div class="modal" id="photosModal">
   <div class="modal-box large">
@@ -132,6 +98,18 @@
     <button class="close" onclick="closeMessage()">×</button>
     <h2 style="color:#d63384; margin-bottom: 25px; font-size: 28px;">✨ Mensaje Especial ✨</h2>
     <p id="specialMessage" style="font-size: 18px; line-height: 2; color: #555; text-align: center;"></p>
+  </div>
+</div>
+
+<!-- Modal de Sobres -->
+<div class="modal" id="envelopesModal">
+  <div class="modal-box large">
+    <button class="close" onclick="closeEnvelopes()">×</button>
+    <h2 style="color:#d63384; margin-bottom:20px; font-size: 28px;">💌 Para cuando lo necesites</h2>
+    <p style="color: #a84b7a; margin-bottom: 25px; font-size: 17px;">
+      Haz clic en cada sobre para leer un mensaje especial 💕
+    </p>
+    <div class="envelopes-grid" id="envelopesGrid"></div>
   </div>
 </div>
 
