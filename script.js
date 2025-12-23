@@ -195,7 +195,7 @@ function closePhotos() {
 }
 
 const bookPhrases = [
-  { text: "Los detalles son el reflejo de cada uno de nosotros, por eso no se puede reemplazar a nadie, porque todos estamos hechos de pequeños y preciosos detalles.", book: "El mapa de los anhelos", author: "Alice Kellen" },
+  { text: "El presente se compone de instantes, Maya.Céntrate en los momentos, en las pequeñas cosas de cada día, y vívelas con el corazón. Sueña con el mañana y no te escondas del pasado. Porque estamos hechos de recuerdos, cariño. Es lo que somos", book: "Cuando no queden más estrellas que contar", author: "María Martínez" },
   { text: "Ser fuerte no significa que seas de piedra. Todos pasamos malos momentos porque, nos guste o no la vida es así. La diferencia está en lo que hagas después. Puede que te derrumbes, pero sigues adelante a pesar de todo. Por eso eres fuerte. Más de lo que te imaginas.", book: "Hasta que nos quedemos sin estrellas", author: "Inma Rubiales" },
   { text: "Porque no hay nada más poderoso que ser un humano que ha luchado, que ha sobrevivido, que sabe cómo se siente y puede extender su mano a otros con una sonrisa y que puede asegurarles que sí se puede salir adelante, que ellos son prueba de ello.", book: "Sigue mi voz", author: "Ariana Godoy" },
   { text: "Era como el arte. Pocos logran entenderlo, pero quienes lo hicieron saben que nunca encontrarán a nadie que los haga sentir igual.", book: "El arte de ser nosotros", author: "Inma Rubiales" },
@@ -329,4 +329,5 @@ function closeEnvelopes() {
     const allEnvelopes = document.querySelectorAll('.envelope');
     allEnvelopes.forEach(env => env.classList.remove('open'));
   }, 300);
+
 }
